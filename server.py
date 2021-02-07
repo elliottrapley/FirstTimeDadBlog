@@ -5,7 +5,6 @@ app = Flask(__name__)
 print(__name__)
 
 
-
 @app.route('/')
 def my_home():
     return render_template('index.html')
@@ -15,10 +14,12 @@ def my_home():
 def html_page(page_name):
     return render_template(page_name)
 
+
 # This function returns a date and time stamp. This is used for when messages are sent.
 def get_date_time():
   x = datetime.datetime.now()
   return x.strftime("%c")
+
 
 # This function is for the user to join mailing list. Name and email is inserted as txt file. 
 def write_to_file_subscriber(data):
@@ -30,14 +31,14 @@ def write_to_file_subscriber(data):
         new_subscribers.close()  # Closes the file safely.
 
 
-# This function is for the contact me page when user inputs contact details and message. Writes to CSV file.
+# This function is for the contact me page when user inputs contact details and message. Writes to txt file.
 def write_to_file_message(data):
     with open('new_message.txt', newline='', mode='a') as new_message:
         name = data["name"]
         email = data["email"]
         telephone = data["telephone"]
         message = data["message"]
-        new_message.write(get_date_time()) #Adds current date and time stamp when message was sent
+        new_message.write('\n'get_date_time()) #Adds current date and time stamp when message was sent
         file = new_message.write(f'\nName: {name} \nEmail: {email} \nTelephone: {telephone} \nMessage: {message}')
         new_message.write('\n')  # This creates a blank line to separate the messages in the txt file.
         new_message.close()  # Closes the file safely.
