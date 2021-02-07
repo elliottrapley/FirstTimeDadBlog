@@ -38,7 +38,8 @@ def write_to_file_message(data):
         email = data["email"]
         telephone = data["telephone"]
         message = data["message"]
-        new_message.write('\n'get_date_time()) #Adds current date and time stamp when message was sent
+        new_message.write('\n')  # This creates a blank line to separate the messages in the txt file.
+        new_message.write(get_date_time()) #Adds current date and time stamp when message was sent
         file = new_message.write(f'\nName: {name} \nEmail: {email} \nTelephone: {telephone} \nMessage: {message}')
         new_message.write('\n')  # This creates a blank line to separate the messages in the txt file.
         new_message.close()  # Closes the file safely.
